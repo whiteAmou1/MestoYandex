@@ -1,0 +1,240 @@
+@import url('./normalize.css');
+@import url('./blocks/footer/footer.css'); 
+@import url('./blocks/header/header.css');
+@import url('./blocks/main/main.css');
+@import url('./blocks/nav/nav.css'); 
+@import url('./fonts/fonts.css');
+
+body{
+background-color: black;
+color:white;
+font-family: 'Inter';
+display:flex;
+flex-direction: column;
+align-items: center;
+font-family: 'Inter',Arial,sans-serif;
+}
+
+header{
+border-bottom: 1px solid #545454;
+width:calc(100% - 500px);
+margin:45px auto 0;
+padding-bottom:48px;
+}
+
+.header__logo_svg{
+width:142px;
+height: auto;
+}
+
+nav{
+  display:flex;
+width:calc(100% - 500px);
+margin-top:41px auto 0;
+}
+
+.nav__bar{
+display:flex;
+flex-direction: row;
+color:white;
+align-items: center;
+gap:20px;
+padding:20px 0;
+}
+
+.img__circle{
+border-radius: 50%;
+}
+
+.nav__title{
+white-space: nowrap;
+font-weight: 500;
+font-size:42px;
+line-height: 48px;
+}
+
+.nav__subtitle{
+  font-weight: 400;
+  font-size:18px;
+line-height: 21.78px;
+}
+
+.nav__title_div{
+  display:flex;
+  flex-direction: row;
+  gap:25px;
+}
+
+.nav__add-btn:hover{
+opacity:60%;
+}
+
+.nav__add-btn{
+  all: unset;
+  width:150px;
+  height:50px;
+  border: 2px solid white;
+  background: transparent;
+  color:white;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-left:230px;
+  background-color: black;
+  cursor:pointer;
+  position: relative;
+}
+/* читай ниже  */
+.add__btn_plus{
+  font-size:40px;
+  font-weight:200;
+}
+/* переделать кнопку  add лучше сделать svg что бы было кликабельно  полностью  */
+.nav__edit_btn:hover{
+  opacity:60%;
+}
+
+.nav__edit_btn{
+  background: transparent;
+  border:none;
+  align-items: center;
+  display:flex;
+  justify-content: center;
+  cursor: pointer;
+  width:24px;
+  height:24px;
+  padding:0;
+  margin:0;
+}
+.edit__btn_svg{
+  width: 100%;
+  height:100%;
+  margin-top:7px;
+  object-fit: contain;
+}
+.card__grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr) ;
+  grid-template-rows: repeat(2,1fr);
+  gap:20px;
+}
+.card{
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #222;
+  max-width:281px;
+  display: flex;
+  flex-direction: column;
+}
+.card__image{
+  width:100%;
+  height:80%;
+}
+.card__title{
+  background-color: white;
+  color:black;
+  font-size:24px ;
+  line-height: 29.05px;
+  font-weight: 900;
+  padding:25px 21px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.card__container{
+display:flex;
+flex-direction: row;
+justify-content: space-between;
+background-color: white;
+}
+.card__btn_like{
+background: transparent;
+border:0 solid white;
+align-items: center;
+cursor: pointer;
+}
+.like__card_img:hover{
+opacity: 50%;
+}
+.like__logo_svg{
+}
+
+footer{  
+margin:3.7em auto;
+width:calc(100% - 500px);
+}
+
+.footer__copyright{
+color:#545454;
+font-weight: 400;
+font-size: 18px;
+line-height: 21.78px;
+}
+.popup{
+  display: none;
+position: fixed;
+top:0;
+left:0;
+left:0;
+right:0;
+bottom:0;
+background-color: rgba(0,0,0,0.5);
+z-index:1000;
+align-items:center;
+justify-content: center;
+}
+.popup_opened{
+  display: flex;
+}
+.popup__container{
+  background-color:#fff;
+  padding:20px;
+  width:390px;
+  height: 290px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.popup__title{
+  text-align: center;
+  margin-bottom: 20px;
+  color:#000000;
+  font-size:24px;
+  line-height: 29.05px;
+}
+.popup__label{
+  display: block;
+  margin-bottom:5px;
+}
+.popup__input{
+  width:90%;
+  padding:10px;
+  margin-bottom: 10px;
+  border:none;
+  border-radius: 5px;
+border-bottom: 2px solid #ccc;
+}
+.popup__button{
+  width:100%;
+  padding:10px;
+  background-color: #000000;
+  color:white;
+  border:none;
+  border-radius: 5px;
+  cursor:pointer;
+  margin-top:80px;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 37px;
+}
+
+#closePopup{
+position: fixed;
+top:250px;
+right:500px;
+font-size:50px;
+cursor:pointer;
+font-weight: 300;
+}
+#closePopup:hover{
+opacity:60%;
+}
