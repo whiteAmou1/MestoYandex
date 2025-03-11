@@ -20,18 +20,19 @@
   <nav >
 <div class="nav__bar ">
   <img class="img__circle" src="images/Jack.jpg">
-  <div class="nav__discription">
-    <div class="nav__title_div"><h4 class="nav__title">Жак-Ив Кусто</h4>
+  <div class="nav__description">
+    <div class="nav__title_div"><h4 class="nav__title"><span id="profileName"> Жак-Ив Кусто</span></h4>
     <button class="nav__edit_btn">
       <img class="edit__btn_svg" alt="edit" src="./logos/Edit Button.svg" onClick="console.log('edit')">
     </button></div>
     <p class="nav__subtitle">
-      Исследователь океана
+      <span id="profileDescription"> Исследователь океана</span>
       </p>
   </div>
-<button class="nav__add-btn"><span class="add__btn_plus" onClick="console.log('add')">+</span></button>
-
-
+  <div class='nav__add-btn-wrapper'><button class="nav__add-btn"><span class="add__btn_plus" onClick="console.log('add')">+</span></button>
+  </div>
+  
+</div>
 
 
 
@@ -41,21 +42,15 @@
     <h2 class="popup__title">Редактировать профиль</h2> 
     <form class="popup__form">
       <label for="name" class="popup__label">Имя</label>
-      <input type="text" id="name" class="popup__input" placeholder="Жак-Ив Кусто"
+      <input type="text" id="name" class="popup__input" value="Жак-Ив Кусто"
       required>
       <label for="about" class="popup__label">О себе</label>
-      <input type="text" id="description" class="popup__input" placeholder="Исследователь океана"
+      <input type="text" id="description" class="popup__input" value="Исследователь океана"
       required>
-      <button class="popup__button" type="submit">  Сохранить </button>
+      <button class="popup__button" type="button" id="saveBtn">  Сохранить </button>
     </form>
   </div>
-</div>
 
-
-
-
-
-</div>
   </nav>
   <main>
     <div class="card__grid">
