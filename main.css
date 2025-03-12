@@ -137,6 +137,7 @@ flex-shrink: 0;
   gap:20px;
 }
 .card{
+  position:relative;
   border-radius: 10px;
   overflow: hidden;
   background-color: #222;
@@ -165,15 +166,7 @@ flex-direction: row;
 justify-content: space-between;
 background-color: white;
 }
-.card__btn_like{
-background: transparent;
-border:0 solid white;
-align-items: center;
-cursor: pointer;
-}
-.like__card_img:hover{
-opacity: 50%;
-}
+
 footer{  
 margin:3.7em auto;
 width:calc(100% - 500px);
@@ -186,7 +179,6 @@ font-size: 18px;
 line-height: 21.78px;
 }
 .popup{
-
 position: fixed;
 top:50%;
 left:50%;
@@ -268,3 +260,43 @@ body.body_opened::before {
   background-color: rgba(0, 0, 0, 0.5); /* затемнение */
   z-index: 999; /* размещаем поверх содержимого */
 }
+
+.card__btn_like{
+  background: transparent;
+  border:none;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  }
+
+.card__btn_like.liked{
+  background: transparent;
+}
+
+  .like__card_img:hover{
+  opacity: 50%;
+  }
+  .card__btn_like .like__card_img{
+    transition: opacity 0.3s;
+  }
+  .card__btn_like:hover .like__card_img{
+    opacity:0.5;
+  }
+.card__btn_delete{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background: transparent;
+  border:none;
+  cursor:pointer;
+  padding:5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+}
+.card__btn_delete:hover {
+  opacity: 0.6;
+}
+
+
