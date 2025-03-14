@@ -23,16 +23,32 @@
   <div class="nav__description">
     <div class="nav__title_div"><h4 class="nav__title"><span id="profileName"> Жак-Ив Кусто</span></h4>
     <button class="nav__edit_btn">
-      <img class="edit__btn_svg" alt="edit" src="./logos/Edit Button.svg" onClick="console.log('edit')">
+      <img class="edit__btn_svg" alt="edit" src="./logos/Edit Button.svg" >
     </button></div>
     <p class="nav__subtitle">
       <span id="profileDescription"> Исследователь океана</span>
       </p>
   </div>
-  <div class='nav__add-btn-wrapper'><button class="nav__add-btn"><span class="add__btn_plus" onClick="console.log('add')">+</span></button>
+  <div class='nav__add-btn-wrapper'><button class="nav__add-btn" id="nav__add_plus"><span class="add__btn_plus" onClick="console.log('add')">+</span></button>
   </div>
   
-</div>
+  
+  <!-- <div class="popup" id="popup-add-card">
+    <div class="popup__container">
+      <span id='closePopup'>&times;</span>
+      <h2 class="popup__title">Добавить карточку</h2> 
+      <form class="popup__form">
+        <label for="cardName" class="popup__label">Название карточки</label>
+        <input type="text" id="cardName" class="popup__input" required>
+        
+        <label for="cardImage" class="popup__label">Ссылка на изображение</label>
+        <input type="url" id="cardImage" class="popup__input" required>
+        
+        <button class="popup__button" type="button" id="saveBtn">Добавить</button>
+      </form>
+    </div>
+  </div>
+   -->
 
 
 
@@ -54,84 +70,11 @@
   </nav>
   <main>
     <div class="card__grid">
-      <div class="card">
-        <button class="card__btn_delete">
-          <img class="delete__icon" src="./logos/Trash.svg" alt="Delete">
-        </button>
-           <img class="card__img" src="./images/karachaevsk.jpg" alt="">
-        </button>
-        <div class="card__container"> 
-          <h4 class="card__title">Карачаевск</h4>
-          <button class="card__btn_like" ><img class="like__card_img"  src='./logos/Like.svg'></button>
-      
-      </div>
-       
-      </div>
-      
-      <div class="card">
-        <button class="card__btn_delete">
-          <img class="delete__icon" src="./logos/Trash.svg" alt="Delete">
-        </button>
-        <img class="card__img" src="./images/elbrus.png" alt="">
-        <div class="card__container">
-          <h4 class="card__title">Гора Ельбрус </h4>
-            <button class="card__btn_like"><img class="like__card_img" src='./logos/Like.svg'></button>
-         
-        </div>
-       
-      </div>
-    
-      <div class="card">
-        <button class="card__btn_delete">
-          <img class="delete__icon" src="./logos/Trash.svg" alt="Delete">
-        </button>
-        <img class="card__img" src="./images/dombay.png" alt="">
-        <div class="card__container"> 
-        <h4 class="card__title">Домбай
-        </h4>
-        <button class="card__btn_like"><img class="like__card_img" src='./logos/Like.svg'>
-      </div>
-      </div>
-    
-      <div class="card">
-        <button class="card__btn_delete">
-          <img class="delete__icon" src="./logos/Trash.svg" alt="Delete">
-        </button>
-        <img class="card__img" src="./images/elbrus.png" alt="Elbrus">
-        <div class="card__container">
-          <h4 class="card__title">
-            Гора Эльбрус </h4>
-            <button class="card__btn_like"><img class="like__card_img" src='./logos/Like.svg'></button>
-         
-        </div>
-      /
-      </div>
-    
-      <div class="card">
-        <button class="card__btn_delete">
-          <img class="delete__icon" src="./logos/Trash.svg" alt="Delete">
-        </button>
-        <img class="card__img" src="./images/dombay.png" alt="Dombai">
-        <div class="card__container">
-          <h4 class="card__title">Домбай</h4>
-            <button class="card__btn_like"><img class="like__card_img" src='./logos/Like.svg'></button>
-        </div>
-      </div>
-
-      <div class="card">
-
-        <button class="card__btn_delete">
-          <img class="delete__icon" src="./logos/Trash.svg" alt="Delete">
-        </button>
-        <img class="card__img" src="./images/karachaevsk.jpg" alt="Karachaevsk">
-        <div class="card__container">
-          <h4 class="card__title">
-            Карачаевск</h4>
-            <button class="card__btn_like"><img class="like__card_img" src='./logos/Like.svg' ></button>
-        </div>
-      </div>
+     
     </div>
 </div>
+</div>
+
 </div>
   </main>
   <footer>

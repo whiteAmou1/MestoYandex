@@ -133,7 +133,6 @@ flex-shrink: 0;
 .card__grid{
   display:grid;
   grid-template-columns:repeat(3,1fr) ;
-  grid-template-rows: repeat(2,1fr);
   gap:20px;
 }
 .card{
@@ -145,9 +144,10 @@ flex-shrink: 0;
   display: flex;
   flex-direction: column;
 }
-.card__image{
+.card__img{
   width:100%;
-  height:80%;
+  height:281px;
+  object-fit: cover;
 }
 .card__title{
   background-color: white;
@@ -162,6 +162,7 @@ flex-shrink: 0;
 }
 .card__container{
 display:flex;
+flex:1;
 flex-direction: row;
 justify-content: space-between;
 background-color: white;
@@ -298,5 +299,74 @@ body.body_opened::before {
 .card__btn_delete:hover {
   opacity: 0.6;
 }
+.popup_add{
+  display: none;
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height:100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items:center;
+  z-index:1000;
+}
+.popup__container_add{
+  position: relative;
+}
+#closePopup{
+  position: absolute;
+  top:-37px;
+  right:-40px;
+  cursor:pointer;
+}
+.popup__img{
+max-width: 75vw;
+max-height: 75vh;
+};
+.popup_add {
+  display: none; /* Скрываем по умолчанию */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Затемняем фон */
+  justify-content: center;
+  align-items: center;
+}
 
+.popup_add.popup_opened {
+  display: flex; /* Показываем попап при открытии */
+}
 
+.popup__container_add {
+  position: relative;
+  background:transparent;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.popup__img {
+max-width: 75vw;
+max-height: 75vh;
+}
+
+.popup__close {
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  font-size: 30px;
+  cursor: pointer;
+}
+#closeAddPopup {
+  position: absolute;
+  top: -30px;
+  right: -40px;
+  font-size: 50px;
+  cursor: pointer;
+  font-weight: 300;
+}
+#closeAddPopup:hover {
+  opacity: 60%;
+}
