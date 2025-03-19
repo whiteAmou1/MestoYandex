@@ -437,7 +437,7 @@ max-width: 75vw;
 max-height: 75vh;
 }
 
-.popup__add_button{
+.popup__add__button{
     width: 100%;
     padding: 10px;
     background-color: #000000;

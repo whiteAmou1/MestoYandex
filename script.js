@@ -171,21 +171,78 @@ imagePopup.addEventListener('click', (event) => {
 
 
 
-
-
-
-
-
-// const addPopupOpen=document.getElementById('nav__add_plus');
-// const popupAdd=document.querySelector('.popup__add');
-// const popupAddClose=document.getElementById('popup__add_close');
-
-// function openPopup(){
-// popupAdd.style.display='flex';
-// }
-// function closePopup(){
-// popupAdd.style.display='none';
-// }
-
-// addPopupOpen.addEventListener('click',openPopup);
-// popupAddClose.addEventListener('click',closePopup);
+    document.addEventListener('DOMContentLoaded', () => {
+      const addPopupOpen = document.getElementById('nav__add_plus');
+      const popupAdd = document.querySelector('.popup__add');
+      const popupAddClose = document.getElementById('popup__add_close');
+      
+      // Форма и поля ввода
+      const addCardForm = document.querySelector('.popup__add_form'); // Форма
+      const cardNameInput = document.getElementById('cardName'); // Поле ввода названия
+      const cardImageInput = document.getElementById('cardImage'); // Поле ввода ссылки
+      const addButton = document.querySelector('.popup__add__button'); // Кнопка отправки формы
+    
+      // Обработчики событий
+      addPopupOpen.addEventListener('click', openAddPopup);
+      popupAddClose.addEventListener('click', closeAddPopup);
+    
+      // Обработчик для отправки формы
+      addButton.addEventListener('click', (event) => {
+        console.log('button clicked');
+        event.preventDefault(); // Отключаем стандартное поведение кнопки
+        console.log('button clicked'); // Проверяем, срабатывает ли обработчик
+    
+        const name = cardNameInput.value; // Получаем имя из поля ввода
+        const link = cardImageInput.value; // Получаем ссылку из поля ввода
+    
+        // Проверка, что поля заполнены
+        if (name && link) {
+          addCardToArray(name, link); // Добавляем карточку в массив
+          renderCards(); // Рендерим карточки с обновленным массивом
+          closeAddPopup(); // Закрываем попап
+          addCardForm.reset(); // Сбрасываем форму
+        } else {
+          alert('Пожалуйста, заполните все поля!'); // Показываем ошибку, если не все поля заполнены
+        }
+      });
+      
+      // Функция открытия попапа
+      function openAddPopup() {
+        popupAdd.style.display = "flex";
+      }
+    
+      // Функция закрытия попапа
+      function closeAddPopup() {
+        popupAdd.style.display = 'none';
+      }
+    
+      // Функция добавления карточки в массив
+      function addCardToArray(name, link) {
+        initialCards.push({ name, link });
+      }
+    
+      // Функция рендеринга карточек
+      function renderCards() {
+        cardGrid.innerHTML = ''; // Очистим старые карточки
+        initialCards.forEach(card => {
+          const cardElement = document.createElement('div');
+          cardElement.classList.add('card');
+      
+          cardElement.innerHTML = `
+            <button class="card__btn_delete">
+              <img class="delete__icon" src="./logos/Trash.svg" alt="Delete">
+            </button>
+            <img class="card__img" src="${card.link}" alt="${card.name}">
+            <div class="card__container">
+              <h4 class="card__title">${card.name}</h4>
+              <button class="card__btn_like">
+                <img class="like__card_img" src='./logos/Like.svg'>
+              </button>
+            </div>
+          `;
+      
+          cardGrid.insertBefore(cardElement,cardGrid.firstChild); // Добавляем карточку в DOM
+        });
+      }
+    });
+    
