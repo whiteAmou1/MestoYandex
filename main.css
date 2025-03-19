@@ -20,6 +20,7 @@ border-bottom: 1px solid #545454;
 width:calc(100% - 500px);
 margin:45px auto 0;
 padding-bottom:48px;
+
 }
 
 .header__logo_svg{
@@ -29,7 +30,7 @@ height: auto;
 
 nav{
   display:flex;
-width:calc(100% - 500px);
+/* width:calc(100% - 500px); */
 margin-top:41px auto 0;
 }
 
@@ -260,6 +261,7 @@ body.body_opened::before {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5); /* затемнение */
   z-index: 999; /* размещаем поверх содержимого */
+  pointer-events: none;
 }
 
 .card__btn_like{
@@ -299,52 +301,135 @@ body.body_opened::before {
 .card__btn_delete:hover {
   opacity: 0.6;
 }
-.popup_add{
-  display: none;
+/*  */
+
+/* Общие стили для попапа */
+/* Основной стиль попапа (скрыт по умолчанию) */
+.popup__zoom{
   position: fixed;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   width: 100%;
-  height:100%;
-  background: rgba(0,0,0,0.7);
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
   justify-content: center;
-  align-items:center;
-  z-index:1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
-.popup__container_add{
+
+/* Активный попап */
+.popup__zoom_opened {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Контейнер внутри попапа */
+.popup__zoom_container {
   position: relative;
+  width:auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-#closePopup{
+
+/* Изображение внутри попапа */
+.popup__img {
+  max-width: 75vw;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 5px;
+  display: block;
+}
+
+/* Кнопка закрытия */
+.popup__zoom_close {
   position: absolute;
-  top:-37px;
-  right:-40px;
-  cursor:pointer;
+  top: -30px;
+  right: -40px;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
 }
-.popup__img{
-max-width: 75vw;
-max-height: 75vh;
-};
-.popup_add {
+
+.popup__close:hover {
+  opacity: 0.7;
+}
+
+/* Заголовок */
+.popup__zoom_title {
+  margin-top: 0;
+  font-size: 18px;
+  text-align: left;
+  color: white;
+align-self: left;
+width:100%;
+}
+
+/* Блокировка прокрутки при открытом попапе */
+.body__zoom_opened {
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  */
+
+
+.popup__add{
   display: none; /* Скрываем по умолчанию */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Затемняем фон */
+  background-color: rgba(0, 0, 0, 0.7); /* Затемняем фон */
   justify-content: center;
   align-items: center;
+  z-index: 1000;
+  
 }
 
-.popup_add.popup_opened {
-  display: flex; /* Показываем попап при открытии */
+#closePopup{
+  position: absolute;
+  top:-37px;
+  right:-40px;
+  cursor:pointer;
 }
 
-.popup__container_add {
+.popup__add_title .popup__add_label{
+  color:black;
+}
+
+
+.popup__add_container { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color:black;
   position: relative;
-  background:transparent;
+  background: #fff; /* Белый фон для контейнера */
   padding: 20px;
+  height: auto;
   border-radius: 8px;
+width: 500px; /* Максимальная ширина */
+  z-index: 1010; /* Контейнер поп-апа должен быть выше фонового затемнения */
 }
 
 .popup__img {
@@ -352,14 +437,19 @@ max-width: 75vw;
 max-height: 75vh;
 }
 
-.popup__close {
-  position: absolute;
-  top: -10px;
-  right: -5px;
-  font-size: 30px;
-  cursor: pointer;
-}
-#closeAddPopup {
+.popup__add_button{
+    width: 100%;
+    padding: 10px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    height: 50px;
+    }
+
+#popup__add_close {
   position: absolute;
   top: -30px;
   right: -40px;
@@ -367,6 +457,6 @@ max-height: 75vh;
   cursor: pointer;
   font-weight: 300;
 }
-#closeAddPopup:hover {
+#popup__add_close:hover {
   opacity: 60%;
 }

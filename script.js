@@ -1,3 +1,33 @@
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+
+
 const editPopup = document.querySelector('.nav__edit_btn');
 const popup = document.getElementById('popup-edit-profile');
 const closeButton = document.getElementById('closePopup');
@@ -7,7 +37,7 @@ const cardGrid = document.querySelector('.card__grid');
 // Открытие поп-апа
 const createPopup = () => {
   popup.classList.add('popup_opened');
-  document.body.classList.add('body_opened');
+  // document.body.classList.add('body_opened');
 };
 
 if (editPopup) editPopup.addEventListener('click', createPopup);
@@ -54,33 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 initialCards.forEach(card => {
   const cardElement = document.createElement('div');
   cardElement.classList.add('card');
@@ -99,35 +102,45 @@ initialCards.forEach(card => {
   cardGrid.appendChild(cardElement);
 });
 
+
+
+
+
+
+
+
+
 // Создаем попап
 const imagePopup = document.createElement('div');
-imagePopup.classList.add('popup_add');
+imagePopup.classList.add('popup__zoom');
 imagePopup.innerHTML = `
-<div class="popup__container_add">
-  <span class="popup__close">&times;</span>
-  <img class="popup__img" src="" alt="Photo">
-  <p class="popup__add_title"></p>
-</div>
+  <div class="popup__zoom_container">
+    <span class="popup__zoom_close">&times;</span>
+    <img class="popup__img" src="" alt="Photo">
+    <p class="popup__zoom_title"></p>
+  </div>
 `;
 document.body.appendChild(imagePopup);
 
 // Получаем элементы попапа
 const popupImg = imagePopup.querySelector('.popup__img');
-const popupTitle = imagePopup.querySelector('.popup__add_title');
-const popupClose = imagePopup.querySelector('.popup__close');
+const popupTitle = imagePopup.querySelector('.popup__zoom_title');
+const popupClose = imagePopup.querySelector('.popup__zoom_close');
 
 // Функция открытия попапа
 function openImagePopup(imageSrc, title) {
   popupImg.src = imageSrc;
+  popupImg.onload = () => {// он лоуда тут не было 
+    imagePopup.classList.add('popup__zoom_opened');
+    document.body.classList.add('body__zoom_opened');  //  не вижу смысла держать его ради слайда 
+  };
   popupTitle.textContent = title;
-  imagePopup.classList.add('popup_opened');
-  document.body.classList.add('body_opened');
 }
 
 // Функция закрытия попапа
 function closeImagePopup() {
-  imagePopup.classList.remove('popup_opened');
-  document.body.classList.remove('body_opened');
+  imagePopup.classList.remove('popup__zoom_opened');
+  document.body.classList.remove('body__zoom_opened');
 }
 
 // Закрытие попапа при клике на крестик
@@ -135,16 +148,44 @@ popupClose.addEventListener('click', closeImagePopup);
 
 // Закрытие попапа при клике вне контейнера
 imagePopup.addEventListener('click', (event) => {
-  if (!event.target.closest('.popup__container_add')) {
+  if (!event.target.closest('.popup__zoom_container')) {
     closeImagePopup();
   }
 });
 
+
 // Открытие попапа при клике на изображение карточки
-cardGrid.addEventListener('click', function (event) {
-  if (event.target.matches('.card__img')) {
-    const card = event.target.closest('.card');
+  cardGrid.addEventListener('click', function (event) {
+    if (event.target.matches('.card__img')) {
+      const card = event.target.closest('.card');
     const cardTitle = card.querySelector('.card__title').textContent;
     openImagePopup(event.target.src, cardTitle);
   }
-});
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const addPopupOpen=document.getElementById('nav__add_plus');
+// const popupAdd=document.querySelector('.popup__add');
+// const popupAddClose=document.getElementById('popup__add_close');
+
+// function openPopup(){
+// popupAdd.style.display='flex';
+// }
+// function closePopup(){
+// popupAdd.style.display='none';
+// }
+
+// addPopupOpen.addEventListener('click',openPopup);
+// popupAddClose.addEventListener('click',closePopup);
