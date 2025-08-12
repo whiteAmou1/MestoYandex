@@ -5,10 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link href="./main.css" rel="stylesheet"  type="text/css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;900&display=swap" rel="stylesheet">
-  <script src='./script.js' defer></script>
-
 </head>
 <body>
   <header>
@@ -19,7 +16,7 @@
   </header>
   <nav >
 <div class="nav__bar ">
-  <img class="img__circle" src="images/Jack.jpg">
+  <img class="img__circle" src="./images/Jack.jpg">
   <div class="nav__description">
     <div class="nav__title_div"><h4 class="nav__title"><span id="profileName"> Жак-Ив Кусто</span></h4>
     <button class="nav__edit_btn">
@@ -29,7 +26,7 @@
       <span id="profileDescription"> Исследователь океана</span>
       </p>
   </div>
-  <div class='nav__add-btn-wrapper'><button class="nav__add-btn" id="nav__add_plus"><span class="add__btn_plus" onClick="console.log('add')">+</span></button>
+  <div class='nav__add-btn-wrapper'><button class="nav__add-btn" id="nav__add_plus"><span class="add__btn_plus" >+</span></button>
   </div>
   
   
@@ -43,12 +40,14 @@
     <h2 class="popup__title">Редактировать профиль</h2> 
     <form class="popup__form">
       <label for="name" class="popup__label">Имя</label>
-      <input type="text" id="name" class="popup__input" value="Жак-Ив Кусто"
-      required>
+      <input type="text" id="name" class="popup__input" value="Жак-Ив Кусто" placeholder="Имя"
+      required maxlength="40" minlength="2">
+      <div class="error-message" id="name-error"></div>
       <label for="about" class="popup__label">О себе</label>
       <input type="text" id="description" class="popup__input" value="Исследователь океана"
-      required>
-      <button class="popup__button" type="button" id="saveBtn">  Сохранить </button>
+      required maxlength="200" minlength="2" placeholder="О себе">
+      <div class="error-message" id="description-error"></div>
+      <button class="popup__button" type="submit" id="saveBtn">  Сохранить </button>
     </form>
   </div>
 
@@ -58,15 +57,24 @@
     <div class="popup__add" id="popup-add-card">
       <div class="popup__add_container">
         <span id='popup__add_close'>&times;</span>
-        <h2 class="popup__add_title">Добавить карточку</h2> 
+        <h2 class="popup__add_title">Новое место</h2> 
+
         <form class="popup__add_form">
-          <label for="cardName" class="popup__label">Название карточки</label>
-          <input  id="cardName" class="popup__add_input" type="input" required>
-          
-          <label for="cardImage" class="popup__add_label">Ссылка на изображение</label>
-          <input type="url" id="cardImage" class="popup__add_input"  required>
-          
-          <button class="popup__add__button" type="button" id="saveBtn">Добавить</button>
+          <div class="popup__add_fields">
+            <input  id="cardName" 
+            class="popup__add_input" type="text" 
+            required placeholder="Название"
+            minlength="2" maxlength="30">
+            <span class="error-message" id="cardName-error"></span>
+            <input type="url" id="cardImage" class="popup__add_input"  
+            required placeholder="Ссылка на картинку"
+            type="url">
+            <span class="error-message" id="cardImage-error"></span>
+          </div>
+          <button class="popup__add__button"
+           type="submit" 
+           id="saveBtn">
+           Cоздать</button>
         </form>
       </div>
     </div>
